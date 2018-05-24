@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Friend Finder</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css"  href="style.css">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Friend Finder</h1>
+			<hr>
+			<h2>Find out who you are most compatible with</h2>
+			<a href="/survey">
+				<button type="button" class="btn btn-primary" id="gotoSurvey">Take the Friend Finder Survey</button>
+			</a>
+		</div>
+		<div id="friend-display">
+			<h2>Possible Friends</h2>
+		</div>
+</div>
+<script>
+$.get("/api/friends",function(data){
+	displayFriends(data);
+});
+function displayFriends(data){
+	data.forEach(function(friend){
+		renderFriend(friend);
+	});
+}
+function renderFriend(friend){
+		var friendDiv = $("<div>");
+		var friendName = $("<h3>");
+		friendName.text(friend.name);
+		var friendPhoto = $("<img>");
+		friendPhoto.attr("src",friend.photo);
+		friendDiv.append(friendName, friendPhoto);
+		$("#friend-display").append(friendDiv);
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.form-group select{
+	width: 55%;
+	font-size: 1.2em;
+}
+.form-group input{
+	width: 75%;
+}
+.form-group label{
+	font-size: 1.5em;
+}
+#submitButton{
+	width: 75%;
+}
+#gotoSurvey{
+	font-size: 1.5em;
+}
